@@ -1,5 +1,6 @@
+using FluentAssertions;
+using FluentAssertions.Extensions;
 using UnitTesting;
-
 namespace xUnitTest
 {
     public class DomainLogicTests
@@ -11,7 +12,8 @@ namespace xUnitTest
             domain = new DomainLogic();
         }
         [Fact]
-        public void Domain_ReturnZero_String()
+        //Naming Convention should be like First Class Name slash Method Name slash and Return Type
+        public void Domain_ReturnZero_ReturnString()
         {
             //Arrange
             int n = 0;
@@ -20,19 +22,19 @@ namespace xUnitTest
             //Assert
             //Assert.Equal(expectedValue, Actual Value);
             Assert.Equal("hi successfull", result);
+            Assert.Contains("hi", result);
         }
-
         [Fact]
-        public void Domain_ReturnOne_String()
+        public void DomainLogics_TodayDate_ReturnDate()
         {
             //Arrange
-            int n = 0;
+
 
             //Action
-            string result = domain.ReturnZero(n);
+            var result = domain.ReturnDate();
             //Assert
             //Assert.Equal(expectedValue, Actual Value);
-            Assert.Contains("hi", result);
+            result.Should().BeBefore(10.January(2089));
         }
     }
 }

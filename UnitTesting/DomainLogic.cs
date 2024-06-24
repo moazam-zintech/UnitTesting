@@ -20,5 +20,10 @@ namespace UnitTesting
                 return "number is not zero";
             }
         }
+
+        public DateTime ReturnDate()
+        {
+            return DateTime.Now;
+        }
     }
 }
